@@ -1507,3 +1507,33 @@ button {
     position: relative;
   }
 }
+
+/* ================= ABOUT IMAGE ================= */
+.about-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-image img {
+  width: 32rem;
+  height: 32rem;
+  object-fit: cover;
+  border-radius: 50%;
+  position: relative;
+
+  /* Pink glow effect */
+  box-shadow:
+    0 0 0 6px rgba(253, 66, 113, 0.15),
+    0 10px 40px rgba(253, 66, 113, 0.35);
+
+  transition: var(--transition);
+}
+
+/* Hover effect (premium feel) */
+.about-image img:hover {
+  transform: scale(1.03);
+  box-shadow:
+    0 0 0 8px rgba(253, 66, 113, 0.2),
+    0 20px 60px rgba(253, 66, 113, 0.45);
+}
