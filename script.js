@@ -2,7 +2,6 @@ const header = document.getElementById("header");
 const menuToggle = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
 const navLinks = document.querySelectorAll(".nav-link");
-const revealElements = document.querySelectorAll(".reveal");
 
 const toggleMenu = () => {
   menuToggle.classList.toggle("active");
@@ -19,11 +18,10 @@ const handleHeaderScroll = () => {
 };
 
 const revealOnScroll = () => {
-  revealElements.forEach((element) => {
+  document.querySelectorAll(".reveal").forEach((element) => {
     const elementTop = element.getBoundingClientRect().top;
-    const revealPoint = 120;
 
-    if (elementTop < window.innerHeight - revealPoint) {
+    if (elementTop < window.innerHeight - 120) {
       element.classList.add("active");
     }
   });
@@ -42,13 +40,37 @@ window.addEventListener("scroll", () => {
 
 window.addEventListener("load", revealOnScroll);
 
-// FAQ toggle
-document.querySelectorAll(".faq-question").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const item = btn.parentElement;
-    item.classList.toggle("active");
-  });
-});
+const counters = document.querySelectorAll(".counter");
 
-// Footer year
-document.getElementById("year").textContent = new Date().getFullYear();
+const runCounters = () => {
+  counters.forEach((counter) => {
+    if (counter.dataset.counted === "true") return;
+
+    const counterTop = counter.getBoundingClientRect().top;
+
+    if (counterTop < window.innerHeight - 100) {
+      counter.dataset.counted = "true";
+
+      const target = Number(counter.dataset.target);
+      let current = 0;
+      const increment = Math.max(1, Math.ceil(target / 80));
+
+      const updateCounter = () => {
+        current += increment;
+
+        if (current >= target) {
+          counter.textContent = target;
+          return;
+        }
+
+        counter.textContent = current;
+        requestAnimationFrame(updateCounter);
+      };
+
+      updateCounter();
+    }
+  });
+};
+
+window.addEventListener("scroll", runCounters);
+window.addEventListener("load", runCounters);
