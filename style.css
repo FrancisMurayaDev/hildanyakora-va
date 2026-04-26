@@ -1467,3 +1467,43 @@ button {
     padding: 0;
   }
 }
+
+@media (max-width: 600px) {
+  .hero-visual {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.4rem;
+    padding-top: 0;
+  }
+
+  .hero-image-main {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: min(32rem, 92vw);
+    height: 40rem;
+    transform: none;
+  }
+
+  .hero-image-main img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .floating-card {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    width: min(32rem, 92vw);
+    justify-content: center;
+  }
+
+  .card-one,
+  .card-two {
+    position: relative;
+  }
+}
