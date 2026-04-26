@@ -74,3 +74,15 @@ const runCounters = () => {
 
 window.addEventListener("scroll", runCounters);
 window.addEventListener("load", runCounters);
+
+const floatingCTA = document.getElementById("floatingCTA");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 200) {
+    floatingCTA.style.opacity = "1";
+    floatingCTA.style.pointerEvents = "auto";
+  } else {
+    floatingCTA.style.opacity = "0";
+    floatingCTA.style.pointerEvents = "none";
+  }
+});
